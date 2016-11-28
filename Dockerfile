@@ -1,15 +1,12 @@
-FROM node:4
+FROM node:7-alpine
 
-MAINTAINER Aleksandr Popov  <mogadanez@gmail.com>
+MAINTAINER Johann Fuechsl <fuechsl@redlever.solutions>
 
-# Create sqsd directory
-WORKDIR /
-RUN mkdir /sqsd
+WORKDIR /sqsd
 
 # Copy sqsd source including
 COPY ./ /sqsd
+RUN npm install
 
 # Run sqsd
-WORKDIR /sqsd
 CMD ["node", "run-cli.js"]
-
